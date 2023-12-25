@@ -38,4 +38,9 @@ if __name__ == "__main__":
             previous_time = time()
         display.fill((0, 0, 0))
         game.draw(display)
+
+        font = pygame.font.Font(None, FONT_SIZE)
+        text = font.render(str(game.pops_count), True, TEXT_COLOR)
+        display.blit(text, (0, 0))
+
         pygame.display.flip()

@@ -10,6 +10,8 @@ BORDER_COLOR = pygame.Color("gray")
 BORDER_SIZE = 1
 SIZE = WIDTH, HEIGHT = PLAIN_HEIGHT * CELL_SIZE, PLAIN_WIDTH * CELL_SIZE
 display = pygame.display.set_mode(SIZE)
+FONT_SIZE = 30
+TEXT_COLOR = pygame.Color("green")
 
 GAME_NAME = "Tetris"
 pygame.display.set_caption(GAME_NAME)

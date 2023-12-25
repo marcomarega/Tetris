@@ -56,17 +56,21 @@ class Plain:
     def full(self) -> bool:
         return any(self.blocks[0])
 
-    def pop(self):
+    def pop(self) -> int:
+        pops_count = 0
         row_indexes: list[int] = list()
         for i in range(self.size[0]):
             if not all(self.blocks[i]):
                 row_indexes.append(i)
+            else:
+                pops_count += 1
         blocks: list[list[Block]] = list()
         while len(blocks) + len(row_indexes) < self.size[0]:
             blocks.append([None for j in range(self.size[1])])
         for i in row_indexes:
             blocks.append(self.blocks[i])
         self.blocks = blocks
+        return pops_count
 
     def draw(self, surface: pygame.Surface):
         for i in range(self.size[0]):
