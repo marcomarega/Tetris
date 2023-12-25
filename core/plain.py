@@ -1,11 +1,8 @@
-import time
-
 import pygame
 
 from core.block import Block
 from core.figure import Figure
 from functions import fill_of_none
-from load import CELL_SIZE
 
 
 class Plain:

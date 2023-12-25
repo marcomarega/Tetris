@@ -3,7 +3,6 @@ import pygame
 from core import block
 from core.block import Block
 from functions import rotate_left, rotate_right
-from load import CELL_SIZE
 
 
 class Figure:

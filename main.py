@@ -1,7 +1,5 @@
 from time import time
 
-import pygame
-
 from core import Game, Figure0, Figure1, Figure2, Figure3, Figure4, Figure5, Figure6
 from load import *
 
