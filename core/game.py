@@ -4,6 +4,7 @@ import pygame
 
 from core.figure import Figure
 from core.plain import Plain
+from load import PLAIN_SIZE
 
 
 class Game:
@@ -30,13 +31,13 @@ class Game:
         if self.figure is None:
             return
         if self.pos[1] - 1 >= 0:
-            self.pos[1] -= 1
+            self.pos = self.pos[0], self.pos[1] - 1
 
     def move_right(self):
         if self.figure is None:
             return
         if self.pos[1] + 1 < self.plain.size[1]:
-            self.pos[1] += 1
+            self.pos = self.pos[0], self.pos[1] + 1
 
     def rotate_left(self):
         if self.figure is None:
@@ -52,7 +53,7 @@ class Game:
         if self.figure is None:
             return
         if self.plain.can_be_downed(self.pos, self.figure):
-            self.pos[0] += 1
+            self.pos = self.pos[0] + 1, self.pos[1]
         else:
             self.plain.paint(self.pos, self.figure)
             self.pos = None
@@ -61,3 +62,8 @@ class Game:
     def force_down(self):
         while self.figure is not None:
             self.down()
+
+    def draw(self, surface: pygame.Surface):
+        self.plain.draw(surface)
+        if self.figure is not None:
+            self.figure.draw(surface, self.pos, PLAIN_SIZE)

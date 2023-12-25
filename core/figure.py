@@ -3,6 +3,7 @@ import pygame
 from core import block
 from core.block import Block
 from functions import rotate_left, rotate_right
+from load import CELL_SIZE
 
 
 class Figure:
@@ -17,6 +18,18 @@ class Figure:
     def rotate_right(self):
         self.size = self.size[1], self.size[0]
         self.blocks = rotate_right(self.blocks)
+
+    def draw(self, surface: pygame.Surface, pos: tuple[int, int], size: tuple[int, int]):
+        for i in range(self.size[0]):
+            for j in range(self.size[1]):
+                pi = pos[0] + i
+                pj = pos[1] + j
+                if not 0 <= pi < size[0] or not 0 <= pj < size[1]:
+                    continue
+                if self.blocks[i][j] is None:
+                    continue
+                pygame.draw.rect(surface, self.blocks[i][j].color, (pj * CELL_SIZE, pi * CELL_SIZE, CELL_SIZE, CELL_SIZE),
+                                 0)
 
 
 class Figure0(Figure):

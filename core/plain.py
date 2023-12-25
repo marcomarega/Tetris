@@ -20,13 +20,13 @@ class Plain:
                 block_j = pos[1] + j
                 if block_i < 0:
                     continue
-                if not block_j < self.size[0] or not 0 <= block_j < self.size[1] or\
+                if not block_i < self.size[0] or not 0 <= block_j < self.size[1] or\
                         self.blocks[block_i][block_j] is not None:
                     return False
         return True
 
     def can_be_downed(self, pos: tuple[int, int], figure: Figure) -> bool:
-        pos[0] += 1
+        pos = pos[0] + 1, pos[1]
         return self.matches(pos, figure)
 
     def paint(self, pos: tuple[int, int], figure: Figure):
@@ -59,4 +59,5 @@ class Plain:
             for j in range(self.size[1]):
                 if self.blocks[i][j] is None:
                     continue
-                pygame.draw.rect(surface, self.blocks[i][j].color, (i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE))
+                pygame.draw.rect(surface, self.blocks[i][j].color, (j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE),
+                                 0)
