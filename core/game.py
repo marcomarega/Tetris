@@ -16,6 +16,12 @@ class Game:
         self.figure: Figure = None
         self.figures = figures
 
+    def restart(self):
+        self.over = False
+        self.plain.clear()
+        self.pos = None
+        self.figure = None
+
     def game_over(self) -> bool:
         if self.over:
             return True

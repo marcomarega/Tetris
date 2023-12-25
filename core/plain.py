@@ -13,6 +13,9 @@ class Plain:
         self.size = size
         self.blocks: list[list[Block]] = fill_of_none(size)
 
+    def clear(self):
+        self.blocks: list[list[Block]] = fill_of_none(self.size)
+
     def matches(self, pos: tuple[int, int], figure: Figure) -> bool:
         for i in range(figure.size[0]):
             for j in range(figure.size[1]):
