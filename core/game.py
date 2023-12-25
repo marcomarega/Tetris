@@ -22,12 +22,13 @@ class Game:
         self.over = self.plain.full()
         return self.over
 
-    def update_figure(self):
+    def update(self):
         if self.over:
             return
         if self.figure is None:
             self.figure = random.choice(self.figures)(random.choice(self.colors))
             self.pos = -self.figure.size[0], self.plain.size[1] // 2
+        self.plain.pop()
 
     def move_left(self):
         if self.figure is None:

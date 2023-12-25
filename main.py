@@ -30,7 +30,7 @@ if __name__ == "__main__":
                     game.rotate_right()
                 if event.key == pygame.K_SPACE:
                     game.force_down()
-        game.update_figure()
+        game.update()
         if time() - previous_time > TICK:
             game.down()
             previous_time = time()

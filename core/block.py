@@ -1,6 +1,6 @@
 import pygame
 
-from load import CELL_SIZE
+from load import CELL_SIZE, BORDER_SIZE, BORDER_COLOR
 
 
 class Block:
@@ -15,3 +15,5 @@ class Block:
             return
         pygame.draw.rect(surface, self.color, (pj * CELL_SIZE, pi * CELL_SIZE, CELL_SIZE, CELL_SIZE),
                          0)
+        pygame.draw.rect(surface, BORDER_COLOR, (pj * CELL_SIZE, pi * CELL_SIZE, CELL_SIZE, CELL_SIZE),
+                         BORDER_SIZE)
