@@ -25,8 +25,16 @@ class Plain:
                     return False
         return True
 
-    def can_be_downed(self, pos: tuple[int, int], figure: Figure) -> bool:
+    def can_down(self, pos: tuple[int, int], figure: Figure) -> bool:
         pos = pos[0] + 1, pos[1]
+        return self.matches(pos, figure)
+
+    def can_move_left(self, pos: tuple[int, int], figure: Figure) -> bool:
+        pos = pos[0], pos[1] - 1
+        return self.matches(pos, figure)
+
+    def can_move_right(self, pos: tuple[int, int], figure: Figure) -> bool:
+        pos = pos[0], pos[1] + 1
         return self.matches(pos, figure)
 
     def paint(self, pos: tuple[int, int], figure: Figure):
@@ -41,7 +49,7 @@ class Plain:
                 self.blocks[block_i][block_j] = figure.blocks[i][j]
 
     def full(self) -> bool:
-        return any(self.blocks[-1])
+        return any(self.blocks[0])
 
     def pop(self):
         row_indexes: list[int] = list()
@@ -57,7 +65,5 @@ class Plain:
     def draw(self, surface: pygame.Surface):
         for i in range(self.size[0]):
             for j in range(self.size[1]):
-                if self.blocks[i][j] is None:
-                    continue
-                pygame.draw.rect(surface, self.blocks[i][j].color, (j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE),
-                                 0)
+                if self.blocks[i][j] is not None:
+                    self.blocks[i][j].draw(surface, (i, j), (0, 0), self.size)

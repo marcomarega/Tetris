@@ -23,6 +23,8 @@ class Game:
         return self.over
 
     def update_figure(self):
+        if self.over:
+            return
         if self.figure is None:
             self.figure = random.choice(self.figures)(random.choice(self.colors))
             self.pos = -self.figure.size[0], self.plain.size[1] // 2
@@ -30,14 +32,16 @@ class Game:
     def move_left(self):
         if self.figure is None:
             return
-        if self.pos[1] - 1 >= 0:
-            self.pos = self.pos[0], self.pos[1] - 1
+        if self.plain.can_move_left(self.pos, self.figure):
+            if self.pos[1] - 1 >= 0:
+                self.pos = self.pos[0], self.pos[1] - 1
 
     def move_right(self):
         if self.figure is None:
             return
-        if self.pos[1] + 1 < self.plain.size[1]:
-            self.pos = self.pos[0], self.pos[1] + 1
+        if self.plain.can_move_right(self.pos, self.figure):
+            if self.pos[1] + 1 < self.plain.size[1]:
+                self.pos = self.pos[0], self.pos[1] + 1
 
     def rotate_left(self):
         if self.figure is None:
@@ -52,7 +56,7 @@ class Game:
     def down(self):
         if self.figure is None:
             return
-        if self.plain.can_be_downed(self.pos, self.figure):
+        if self.plain.can_down(self.pos, self.figure):
             self.pos = self.pos[0] + 1, self.pos[1]
         else:
             self.plain.paint(self.pos, self.figure)

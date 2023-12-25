@@ -22,14 +22,8 @@ class Figure:
     def draw(self, surface: pygame.Surface, pos: tuple[int, int], size: tuple[int, int]):
         for i in range(self.size[0]):
             for j in range(self.size[1]):
-                pi = pos[0] + i
-                pj = pos[1] + j
-                if not 0 <= pi < size[0] or not 0 <= pj < size[1]:
-                    continue
-                if self.blocks[i][j] is None:
-                    continue
-                pygame.draw.rect(surface, self.blocks[i][j].color, (pj * CELL_SIZE, pi * CELL_SIZE, CELL_SIZE, CELL_SIZE),
-                                 0)
+                if self.blocks[i][j] is not None:
+                    self.blocks[i][j].draw(surface, (i, j), pos, size)
 
 
 class Figure0(Figure):
@@ -46,8 +40,7 @@ class Figure1(Figure):
     def __init__(self, color: pygame.Color):
         size = (1, 4)
         blocks = [
-            [Block(color), Block(color), Block(color)],
-            [None, Block(color), None]
+            [Block(color), Block(color), Block(color), Block(color)],
         ]
         super(Figure1, self).__init__(size, blocks)
 
