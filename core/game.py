@@ -54,11 +54,15 @@ class Game:
         if self.figure is None:
             return
         self.figure.rotate_left()
+        if not self.plain.matches(self.pos, self.figure):
+            self.figure.rotate_right()
 
     def rotate_right(self):
         if self.figure is None:
             return
         self.figure.rotate_right()
+        if not self.plain.matches(self.pos, self.figure):
+            self.figure.rotate_left()
 
     def down(self):
         if self.figure is None:

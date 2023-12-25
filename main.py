@@ -9,7 +9,7 @@ if __name__ == "__main__":
     game = Game(
         plain_size=PLAIN_SIZE,
         figures=[Figure0, Figure1, Figure2, Figure3, Figure4, Figure5, Figure6],
-        colors=[pygame.Color("red"), pygame.Color("green"), pygame.Color("blue"), pygame.Color("yellow")]
+        colors=[pygame.Color("red"), pygame.Color("green"), pygame.Color(100, 100, 255), pygame.Color("yellow")]
     )
     running = True
     previous_time = time()

@@ -61,8 +61,6 @@ class Plain:
         for i in range(self.size[0]):
             if not all(self.blocks[i]):
                 row_indexes.append(i)
-            else:
-                time.sleep(1)
         blocks: list[list[Block]] = list()
         while len(blocks) + len(row_indexes) < self.size[0]:
             blocks.append([None for j in range(self.size[1])])
