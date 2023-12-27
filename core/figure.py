@@ -1,5 +1,3 @@
-import pygame
-
 from core import block
 from core.block import Block
 from functions import rotate_left, rotate_right
@@ -18,15 +16,9 @@ class Figure:
         self.size = self.size[1], self.size[0]
         self.blocks = rotate_right(self.blocks)
 
-    def draw(self, surface: pygame.Surface, pos: tuple[int, int], size: tuple[int, int]):
-        for i in range(self.size[0]):
-            for j in range(self.size[1]):
-                if self.blocks[i][j] is not None:
-                    self.blocks[i][j].draw(surface, (i, j), pos, size)
-
 
 class Figure0(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (2, 3)
         blocks = [
             [Block(color), Block(color), Block(color)],
@@ -36,7 +28,7 @@ class Figure0(Figure):
 
 
 class Figure1(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (1, 4)
         blocks = [
             [Block(color), Block(color), Block(color), Block(color)],
@@ -45,7 +37,7 @@ class Figure1(Figure):
 
 
 class Figure2(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (2, 3)
         blocks = [
             [Block(color), None, None],
@@ -55,7 +47,7 @@ class Figure2(Figure):
 
 
 class Figure3(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (2, 3)
         blocks = [
             [Block(color), Block(color), Block(color)],
@@ -65,7 +57,7 @@ class Figure3(Figure):
 
 
 class Figure4(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (2, 3)
         blocks = [
             [Block(color), Block(color), None],
@@ -75,7 +67,7 @@ class Figure4(Figure):
 
 
 class Figure5(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (2, 3)
         blocks = [
             [None, Block(color), Block(color)],
@@ -85,7 +77,7 @@ class Figure5(Figure):
 
 
 class Figure6(Figure):
-    def __init__(self, color: pygame.Color):
+    def __init__(self, color):
         size = (2, 2)
         blocks = [
             [Block(color), Block(color)],

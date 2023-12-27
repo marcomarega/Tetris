@@ -1,5 +1,3 @@
-import pygame
-
 from core.block import Block
 from core.figure import Figure
 from functions import fill_of_none
@@ -68,9 +66,3 @@ class Plain:
             blocks.append(self.blocks[i])
         self.blocks = blocks
         return pops_count
-
-    def draw(self, surface: pygame.Surface):
-        for i in range(self.size[0]):
-            for j in range(self.size[1]):
-                if self.blocks[i][j] is not None:
-                    self.blocks[i][j].draw(surface, (i, j), (0, 0), self.size)

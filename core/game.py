@@ -1,14 +1,11 @@
 import random
 
-import pygame
-
 from core.figure import Figure
 from core.plain import Plain
-from load import PLAIN_SIZE
 
 
 class Game:
-    def __init__(self, plain_size: tuple[int, int], colors: list[pygame.Color], figures: list):
+    def __init__(self, plain_size: tuple[int, int], colors: list, figures: list):
         self.over = False
         self.plain = Plain(plain_size)
         self.colors = colors
@@ -79,8 +76,3 @@ class Game:
     def force_down(self):
         while self.figure is not None:
             self.down()
-
-    def draw(self, surface: pygame.Surface):
-        self.plain.draw(surface)
-        if self.figure is not None:
-            self.figure.draw(surface, self.pos, PLAIN_SIZE)
